@@ -1,4 +1,4 @@
-# Serasa Customer
+# Serasa Internal
 
 Internal service for registration of physical person in the serasa database
 
