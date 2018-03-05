@@ -28,7 +28,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Serasa Internal App</h1>
         </header>
-        <Grid centered columns={1}>
+        <Grid centered container columns={1}>
           <Grid.Column>
             {/* redirect if not authenticated */}
             {this.state.isAuthenticated ?

@@ -16,6 +16,6 @@ export const RegisterUser = (data) => {
     return json
   })
   .catch(err => { 
-    console.error(err); 
+    console.log(err); 
   });
 }
