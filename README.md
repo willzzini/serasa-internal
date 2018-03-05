@@ -34,7 +34,6 @@ On your terminal, run the server using this two simple command:
     ```
 	yarn install
 	yarn start
-    
     ```
 
 
