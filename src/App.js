@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentWillMount = () => {
-    localStorage.getItem('isAuthenticated') &&
+    sessionStorage.getItem('isAuthenticated') &&
       this.setState({ isAuthenticated: true })
   }
 

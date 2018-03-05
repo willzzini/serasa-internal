@@ -3,7 +3,7 @@ import { Button, Form, Message } from 'semantic-ui-react'
 import { Formik } from 'formik';
 import { RegisterUser } from '../../Api'
 
-const RegisterForm = () => (
+const LoginForm = () => (
 
   <Formik
     initialValues={{
@@ -68,7 +68,7 @@ const RegisterForm = () => (
             />
           </Form.Field>
           {touched.password && errors.password && <div>{errors.password}</div>}
-          <Button type='submit' disabled={isSubmitting}>Register</Button>
+          <Button type='submit' disabled={isSubmitting}>Login</Button>
           {status &&
             <Message
               error
@@ -90,4 +90,4 @@ const RegisterForm = () => (
   // </Form>
 )
 
-export default RegisterForm
+export default LoginForm
