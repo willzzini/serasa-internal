@@ -1,4 +1,4 @@
-# Serasa Customer
+# Serasa Internal
 
 Internal service for registration of physical person in the serasa database
 
@@ -14,7 +14,7 @@ To start the service you need only the installed node.js and npm and yarn
 ## Installation / Usage
 * Git clone this repo to your PC
     ```
-        $ git clone https://github.com/willzzini/serasa-customer.git
+        $ git clone https://github.com/willzzini/serasa-internal.git
 * After this, ensure you have installed:
     ```
         $ sudo apt-get update
