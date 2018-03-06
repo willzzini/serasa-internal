@@ -1,6 +1,6 @@
 # Serasa Internal
 
-Internal service for registration of physical person in the serasa database
+Internal service for registration of natural person in the serasa database
 
 ## Getting Started
 
