@@ -1,9 +1,10 @@
 import React from 'react'
 import { Button, Form, Message } from 'semantic-ui-react'
 import { Formik } from 'formik';
-import { RegisterUser } from '../../Api'
+import { LoginUser } from '../../Api'
+import { withRouter } from 'react-router-dom';
 
-const LoginForm = () => (
+const LoginForm = ({ history }) => (
 
   <Formik
     initialValues={{
@@ -24,11 +25,12 @@ const LoginForm = () => (
       values,
       { setSubmitting, setErrors, setStatus }
     ) => {
-      RegisterUser(values).then(
+      LoginUser(values).then(
         res => {
           setSubmitting(false);
           sessionStorage.setItem('isAuthenticated', true)
-
+          sessionStorage.setItem('token', res.access_token)
+          history.push('/customers')
         },
         errors => {
           setSubmitting(false);
@@ -78,16 +80,6 @@ const LoginForm = () => (
         </Form>
       )}
   />
-  // <Form>
-  //   <Form.Field>
-  //     <input placeholder='Username' />
-  //   </Form.Field>
-  //   <Form.Field>
-  //     <input type="password" placeholder='Password' />
-  //   </Form.Field>
-  //   <Button type='submit'>Login</Button>
-  //   <Button type='submit'>Register</Button>
-  // </Form>
 )
 
-export default LoginForm
+export default withRouter(LoginForm)

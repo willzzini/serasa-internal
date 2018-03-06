@@ -27,13 +27,11 @@ const RegisterForm = () => (
       RegisterUser(values).then(
         res => {
           setSubmitting(false);
-          sessionStorage.setItem('isAuthenticated', true)
-
+          setStatus({ success: res.message })
         },
         errors => {
           setSubmitting(false);
-          // Maybe transform your API's errors into the same shape as Formik's
-          setStatus(errors.message);
+          setStatus({ error: errors.message });
         }
       );
     }}
@@ -47,7 +45,11 @@ const RegisterForm = () => (
       handleSubmit,
       isSubmitting,
     }) => (
-        <Form error={status} onSubmit={handleSubmit}>
+        <Form
+          error={status && status.hasOwnProperty('error')}
+          success={status && status.hasOwnProperty('success')}
+          onSubmit={handleSubmit}
+        >
           <Form.Field>
             <input
               type="text"
@@ -69,25 +71,28 @@ const RegisterForm = () => (
           </Form.Field>
           {touched.password && errors.password && <div>{errors.password}</div>}
           <Button type='submit' disabled={isSubmitting}>Register</Button>
-          {status &&
-            <Message
-              error
-              content={status}
-            />
+          {(() => {
+            if (status && status.hasOwnProperty('error')) {
+              return (
+                <Message
+                  error
+                  content={status.error}
+                />
+              )
+            }
+            if (status && status.hasOwnProperty('success')) {
+              return (
+                <Message
+                  success
+                  content={status.success}
+                />
+              )
+            }
           }
+          )()}
         </Form>
       )}
   />
-  // <Form>
-  //   <Form.Field>
-  //     <input placeholder='Username' />
-  //   </Form.Field>
-  //   <Form.Field>
-  //     <input type="password" placeholder='Password' />
-  //   </Form.Field>
-  //   <Button type='submit'>Login</Button>
-  //   <Button type='submit'>Register</Button>
-  // </Form>
 )
 
 export default RegisterForm

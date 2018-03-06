@@ -6,19 +6,18 @@ export const RegisterUser = data => {
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" }
   })
-  .then(res => { 
-    if(res.status < 400 ) {
-      return res.json().then(json => {
-        return json
-      })
-    }
-    else {
-      // throw Error(res.json())
-      return res.json().then(json => {
-        return Promise.reject(json)
-      })
-    }
-  })
+    .then(res => {
+      if (res.status < 400) {
+        return res.json().then(json => {
+          return json
+        })
+      }
+      else {
+        return res.json().then(json => {
+          return Promise.reject(json)
+        })
+      }
+    })
 }
 
 export const LoginUser = data => {
@@ -27,17 +26,16 @@ export const LoginUser = data => {
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" }
   })
-  .then(res => { 
-    if(res.status < 400 ) {
-      return res.json().then(json => {
-        return json
-      })
-    }
-    else {
-      // throw Error(res.json())
-      return res.json().then(json => {
-        return Promise.reject(json)
-      })
-    }
-  })
+    .then(res => {
+      if (res.status < 400) {
+        return res.json().then(json => {
+          return json
+        })
+      }
+      else {
+        return res.json().then(json => {
+          return Promise.reject(json)
+        })
+      }
+    })
 }

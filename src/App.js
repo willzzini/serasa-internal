@@ -5,6 +5,7 @@ import { Grid } from 'semantic-ui-react'
 import { Route, Switch, Redirect } from "react-router-dom";
 import Customers from './components/Customers/Customers'
 import Login from './components/Login/Login'
+import Register from './components/Login/Register'
 
 class App extends Component {
 
@@ -38,6 +39,7 @@ class App extends Component {
             <Switch>
               {/* subroutes */}
               <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
               <Route path="/customers" component={Customers} />
             </Switch>
           </Grid.Column>
