@@ -34,8 +34,12 @@ const LoginForm = ({ history }) => (
         },
         errors => {
           setSubmitting(false);
-          // Maybe transform your API's errors into the same shape as Formik's
-          setStatus(errors.message);
+          if(errors.hasOwnProperty('description')) {
+            setStatus(errors.error);
+          }
+          else {
+            setStatus(errors.message);
+          }
         }
       );
     }}
@@ -71,12 +75,25 @@ const LoginForm = ({ history }) => (
           </Form.Field>
           {touched.password && errors.password && <div>{errors.password}</div>}
           <Button type='submit' disabled={isSubmitting}>Login</Button>
-          {status &&
-            <Message
-              error
-              content={status}
-            />
+          {(() => {
+            if (status && status.hasOwnProperty('error')) {
+              return (
+                <Message
+                  error
+                  content={status.error}
+                />
+              )
+            }
+            if (status && status.hasOwnProperty('success')) {
+              return (
+                <Message
+                  success
+                  content={status.success}
+                />
+              )
+            }
           }
+          )()}
         </Form>
       )}
   />

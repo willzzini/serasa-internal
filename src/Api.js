@@ -40,11 +40,11 @@ export const LoginUser = data => {
     })
 }
 
-export const Costumer = data => {
-  return fetch(`${URL}/customer`, {
+export const RegisterCustomer = data => {
+  return fetch(`${URL}/customer/${data.cpf}`, {
     method: 'post',
     body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
+    headers: { "Content-Type": "application/json", "Authorization": `JWT ${sessionStorage.getItem('token')}` }
   })
     .then(res => {
       if (res.status < 400) {
