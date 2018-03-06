@@ -39,3 +39,23 @@ export const LoginUser = data => {
       }
     })
 }
+
+export const Costumer = data => {
+  return fetch(`${URL}/customer`, {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  })
+    .then(res => {
+      if (res.status < 400) {
+        return res.json().then(json => {
+          return json
+        })
+      }
+      else {
+        return res.json().then(json => {
+          return Promise.reject(json)
+        })
+      }
+    })
+}

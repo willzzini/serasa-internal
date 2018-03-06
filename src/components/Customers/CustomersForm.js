@@ -7,6 +7,9 @@ const CustomersForm = () => (
     <input type="text" placeholder='nome' name="name"/>
     </Form.Field>
     <Form.Field>
+    <input type="text" placeholder='cpf' name="name"/>
+    </Form.Field>
+    <Form.Field>
       <input type="number" placeholder='Valor do débito' name="debtor_value"/>
     </Form.Field>
     <Form.Field>
