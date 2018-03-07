@@ -3,16 +3,18 @@ import { Button, Form, Dropdown, Message } from 'semantic-ui-react'
 import { Formik } from 'formik';
 import { RegisterCustomer } from '../../Api'
 
+const initialValues = {
+  name: '',
+  cpf: '',
+  customer_defaulter: false,
+  debtor_value: '',
+  score_id: ''
+}
+
 const CustomersForm = () => {
   return (
     < Formik
-      initialValues={{
-        name: '',
-        cpf: '',
-        customer_defaulter: false,
-        debtor_value: 0,
-        score_id: 1
-      }}
+      initialValues={initialValues}
       validate={
         values => {
           let errors = {};
@@ -25,17 +27,21 @@ const CustomersForm = () => {
           if (values.debtor_value < 0) {
             errors.debtor_value = 'Campo obrigatório';
           }
+          if (values.score_id < 0 || !values.score_id) {
+            errors.score_id = 'Campo obrigatório';
+          }
           return errors;
         }
       }
       onSubmit={(
         values,
-        { setSubmitting, setErrors, setStatus }
+        { setSubmitting, setErrors, setStatus, resetForm }
       ) => {
         RegisterCustomer(values).then(
           res => {
             setSubmitting(false);
             setStatus({ success: "Cadastro realizado com sucesso" });
+            resetForm(initialValues)
           },
           errors => {
             setSubmitting(false);
@@ -57,6 +63,7 @@ const CustomersForm = () => {
         handleBlur,
         handleSubmit,
         isSubmitting,
+        setFieldValue
       }) => (
           <Form
             error={status && status.hasOwnProperty('error')}
@@ -102,7 +109,9 @@ const CustomersForm = () => {
                 fluid
                 selection
                 options={options}
-                value={values.customer_defaulter}
+                text={values.customer_defaulter.text}
+                value={values.customer_defaulter.value}
+                onChange={(e, { name, value }) => setFieldValue(name, value)}
               />
             </Form.Field>
             {touched.customer_defaulter && errors.customer_defaulter && <div>{errors.customer_defaulter}</div>}
@@ -152,7 +161,6 @@ const options = [
     text: 'Não',
     value: false,
   },
-
 ]
 
 export default CustomersForm

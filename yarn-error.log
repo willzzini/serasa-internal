@@ -7344,7 +7344,7 @@ Trace:
   Exit signal: SIGHUP
   Command: sh
   Arguments: -c react-scripts start
-  Directory: /home/wil/project_serasa/serasa-internal
+  Directory: /home/wil/Imagens/serasa-internal
   Output:
   
       at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
