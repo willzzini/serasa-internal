@@ -15,7 +15,7 @@ Platform:
 
 npm manifest: 
   {
-    "name": "serasa-internal",
+    "name": "challenge-internal",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -7344,7 +7344,7 @@ Trace:
   Exit signal: SIGHUP
   Command: sh
   Arguments: -c react-scripts start
-  Directory: /home/wil/Imagens/serasa-internal
+  Directory: /home/wil/Imagens/challenge-internal
   Output:
   
       at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
